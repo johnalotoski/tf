@@ -1,0 +1,6 @@
+.direnv
+backup/
+.terraform/
+*.tfstate*
+*.plan
+config.tf.json
