@@ -26,7 +26,7 @@
   resource.aws_default_vpc.default.tags.Name = "Default VPC";
   resource.aws_default_subnet.default.availability_zone = "us-east-2c";
 
-  resource.aws_security_group.ssh = {
+  resource.aws_security_group.allow_ssh = {
     name        = "allow_ssh";
     description = "Allow SSH inbound traffic";
 
@@ -73,7 +73,7 @@
 
     instance_type = "r5.xlarge";
     key_name = "\${aws_key_pair.builder.key_name}";
-    security_groups = [ "\${aws_security_group.ssh.name}" ];
+    security_groups = [ "\${aws_security_group.allow_ssh.id}" ];
     root_block_device.volume_size = "500";
     subnet_id = "\${aws_default_subnet.default.id}";
     provisioner.local-exec.command = "echo IP address is \${self.public_ip}";
