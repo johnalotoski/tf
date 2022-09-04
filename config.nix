@@ -66,7 +66,7 @@
 
   resource.aws_spot_instance_request.builder = {
     ami = "\${data.aws_ami.nixos.id}";
-    spot_price = "0.06";
+    spot_price = "0.06"; # for r5.xlarge
     wait_for_fulfillment = true;
     spot_type = "persistent";
     instance_interruption_behavior = "stop";
