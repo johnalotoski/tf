@@ -66,15 +66,15 @@
 
   resource.aws_spot_instance_request.builder = {
     ami = "\${data.aws_ami.nixos.id}";
-    spot_price = "0.06"; # for r5.xlarge
+    spot_price = "0.17"; # for r5.xlarge
     wait_for_fulfillment = true;
     spot_type = "persistent";
     instance_interruption_behavior = "stop";
 
-    instance_type = "r5.xlarge";
+    instance_type = "m5.2xlarge";
     key_name = "\${aws_key_pair.builder.key_name}";
     security_groups = [ "\${aws_security_group.allow_ssh.id}" ];
-    root_block_device.volume_size = "500";
+    root_block_device.volume_size = "800";
     subnet_id = "\${aws_default_subnet.default.id}";
     provisioner.local-exec.command = "echo IP address is \${self.public_ip}";
   };
